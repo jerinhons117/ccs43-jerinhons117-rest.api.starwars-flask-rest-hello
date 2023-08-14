@@ -41,8 +41,8 @@ class FavCharacters(db.Model):
     
 class FavPlanets(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
-    planets_id = db.Column(db.Integer, db.ForeignKey('planets.id'),nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    Planets_id = db.Column(db.Integer, db.ForeignKey('planets.id'))
 
 
     def __repr__(self):
@@ -94,7 +94,7 @@ class Planets(db.Model):
      # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), unique=True, nullable=False)
+    full_name = db.Column(db.String(50), unique=True, nullable=False)
     populations = db.Column(db.String(50), unique=True, nullable=False)
     rotarion_period = db.Column(db.String(50), unique=True, nullable=False)
     orbital_period = db.Column(db.String(50), unique=True, nullable=False)
@@ -106,12 +106,12 @@ class Planets(db.Model):
     favPlanets = db.relationship('FavPlanets', backref='planets')
 
     def __repr__(self):
-        return '<Planets %r>' % self.name
+        return '<Planets %r>' % self.full_name
 
     def serialize(self):
         return {
             "id": self.id,
-            "name": self.name,
+            "full_name": self.full_name,
             "populations": self.populations,
             "rotarion_period": self.rotarion_period,
             "orbital_period": self.orbital_period,

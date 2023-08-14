@@ -81,6 +81,14 @@ def handle_planet_single_id(planet_id):
     return jsonify(planet.serialize()), 200
 
 
+@app.route("/favorite/people/<int:people_id>", methods=["POST"])
+def get_fav_character(id):
+   body = request.json
+   FavCharacters = body.query.get("FavCharacter.id")
+   print(FavCharacters)
+   return ""
+
+
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))

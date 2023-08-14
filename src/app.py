@@ -75,18 +75,18 @@ def handle_planets():
 #metodo get me trae uno de character
 
 @app.route('/planets/<int:planets_id>', methods=['GET'])
-def handle_planet_single_id(planet_id):
-    planet = Planets.query.get(planet_id)
+def handle_planet_single_id(planets_id):
+    planet = Planets.query.get(planets_id)
     print(planet)
     return jsonify(planet.serialize()), 200
 
 
-@app.route("/favorite/people/<int:people_id>", methods=["POST"])
-def get_fav_character(id):
-   body = request.json
-   FavCharacters = body.query.get("FavCharacter.id")
-   print(FavCharacters)
-   return ""
+# @app.route("/favorite/people/<int:people_id>", methods=["POST"])
+# def get_fav_character(id):
+#    body = request.json
+#    FavCharacters = body.query.get("FavCharacter.id")
+#    print(FavCharacters)
+#    return ""
 
 
 # this only runs if `$ python src/app.py` is executed
